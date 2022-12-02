@@ -28,14 +28,14 @@ class ShiftCipher:
             emptyArr.append(ord(letter))
         fullArr = []
         for letter in emptyArr:
-            if letter < 64 or letter >= 32:
+            if letter < 64 or letter == 32:
                 fullArr.append(letter)
-            elif letter + self.shift < 97:
-                fullArr.append(123 - (97 - (letter + self.shift)))
-            elif letter + self.shift > 122:
+            elif letter - self.shift < 97:
+                fullArr.append(123 - (97 - (letter - self.shift)))
+            elif letter - self.shift > 122:
                 fullArr.append(letter)
             else:
-                fullArr.append(letter + self.shift)
+                fullArr.append(letter - self.shift)
         message = []
         for letter in fullArr:
             message.append(chr(letter))
